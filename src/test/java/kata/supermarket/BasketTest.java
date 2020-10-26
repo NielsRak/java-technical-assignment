@@ -1,5 +1,7 @@
 package kata.supermarket;
 
+import kata.supermarket.discounts.FlatDiscount;
+import kata.supermarket.discounts.NullDiscount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
