@@ -25,10 +25,11 @@ class BasketTest {
         assertEquals(new BigDecimal(expectedTotal), basket.total());
     }
 
-    static Stream<Arguments> basketProvidesTotalValue() {
+    static Stream<Arguments> basketProvidesTotalValue() throws Exception {
         return Stream.of(
                 noItems(),
                 aSingleItemPricedPerUnit(),
+                aSingleItemPricedPerUnitFlatDiscount(),
                 multipleItemsPricedPerUnit(),
                 aSingleItemPricedByWeight(),
                 multipleItemsPricedByWeight()
