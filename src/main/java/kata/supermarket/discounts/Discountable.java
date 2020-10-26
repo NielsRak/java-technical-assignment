@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 
 public interface Discountable {
 
-    BigDecimal calculateDiscount();
+    BigDecimal calculateDiscount(BigDecimal price);
 }

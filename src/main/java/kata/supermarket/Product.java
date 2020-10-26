@@ -20,8 +20,8 @@ public class Product implements Discountable {
         return pricePerUnit;
     }
 
-    public BigDecimal calculateDiscount() {
-        return BigDecimal.ZERO;
+    public BigDecimal calculateDiscount(BigDecimal price) {
+        return discount.calculate(price);
     }
 
     public Item oneOf() {

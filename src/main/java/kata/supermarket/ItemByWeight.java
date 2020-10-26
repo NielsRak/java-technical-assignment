@@ -18,6 +18,6 @@ public class ItemByWeight implements Item {
 
     @Override
     public BigDecimal discount() {
-        return product.calculateDiscount();
+        return product.calculateDiscount(price());
     }
 }
