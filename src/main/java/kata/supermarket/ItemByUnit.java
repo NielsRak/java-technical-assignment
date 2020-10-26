@@ -16,6 +16,6 @@ public class ItemByUnit implements Item {
 
     @Override
     public BigDecimal discount() {
-        return null;
+        return product.calculateDiscount();
     }
 }
