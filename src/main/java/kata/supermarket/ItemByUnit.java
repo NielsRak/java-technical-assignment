@@ -1,6 +1,7 @@
 package kata.supermarket;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /** line item for the Basket **/
 public class ItemByUnit implements Item {
@@ -19,7 +20,7 @@ public class ItemByUnit implements Item {
     }
 
     public BigDecimal price() {
-        return product.pricePerUnit().multiply(new BigDecimal(units));
+        return product.pricePerUnit().multiply(new BigDecimal(units)).setScale(2, RoundingMode.HALF_UP);
     }
 
     @Override
