@@ -21,7 +21,7 @@ public class Product {
     }
 
     BigDecimal pricePerUnit() {
-        return pricePerUnit;
+        return discount.apply(pricePerUnit);
     }
 
     public Item oneOf() {

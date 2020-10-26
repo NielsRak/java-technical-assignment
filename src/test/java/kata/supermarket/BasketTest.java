@@ -54,12 +54,20 @@ class BasketTest {
         return Arguments.of("a single item priced per unit", "0.49", Collections.singleton(aPintOfMilk()));
     }
 
+    private static Arguments aSingleItemPricedPerUnitFlatDiscount() throws Exception {
+        return Arguments.of("a single item priced per unit", "0.39", Collections.singleton(aPintOfMilkFlatDiscount("0.2")));
+    }
+
     private static Arguments noItems() {
         return Arguments.of("no items", "0.00", Collections.emptyList());
     }
 
     private static Item aPintOfMilk() {
         return new Product(new BigDecimal("0.49")).oneOf();
+    }
+
+    private static Item aPintOfMilkFlatDiscount(String discount) throws Exception {
+        return new Product(new BigDecimal("0.49"), new FlatDiscount(new BigDecimal(discount))).oneOf();
     }
 
     private static Item aPackOfDigestives() {
