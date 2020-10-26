@@ -22,4 +22,11 @@ public class FlatDiscountTest {
                 new FlatDiscount(new BigDecimal("0")).calculate(new BigDecimal("2.00")),
                 is(new BigDecimal("0.00")));
     }
+
+    @Test
+    public void rounding() {
+        assertThat("simple rate calculation",
+                new FlatDiscount(new BigDecimal("0.2")).calculate(new BigDecimal("0.49")),
+                is(new BigDecimal("0.10")));
+    }
 }

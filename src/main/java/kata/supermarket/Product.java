@@ -16,6 +16,11 @@ public class Product implements Discountable {
         this.discount = new NullDiscount();
     }
 
+    public Product(final BigDecimal pricePerUnit, final Discount discount) {
+        this.pricePerUnit = pricePerUnit;
+        this.discount = discount;
+    }
+
     BigDecimal pricePerUnit() {
         return pricePerUnit;
     }

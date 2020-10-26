@@ -1,5 +1,6 @@
 package kata.supermarket;
 
+import kata.supermarket.discounts.FlatDiscount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -29,7 +30,9 @@ class BasketTest {
                 aSingleItemPricedPerUnit(),
                 multipleItemsPricedPerUnit(),
                 aSingleItemPricedByWeight(),
-                multipleItemsPricedByWeight()
+                multipleItemsPricedByWeight(),
+                aSingleItemPricedPerUnitWithFlatDiscount(),
+                multipleItemsPricedPerUnitWithDiscounts()
         );
     }
 
@@ -48,8 +51,17 @@ class BasketTest {
                 Arrays.asList(aPackOfDigestives(), aPintOfMilk()));
     }
 
+    private static Arguments multipleItemsPricedPerUnitWithDiscounts() {
+        return Arguments.of("multiple items priced per unit with discounts", "1.44",
+                Arrays.asList(aPackOfDigestivesWithDiscount(), aDiscountedPintOfMilk()));
+    }
+
     private static Arguments aSingleItemPricedPerUnit() {
         return Arguments.of("a single item priced per unit", "0.49", Collections.singleton(aPintOfMilk()));
+    }
+
+    private static Arguments aSingleItemPricedPerUnitWithFlatDiscount() {
+        return Arguments.of("a single item (units) with discount", "0.40", Collections.singleton(aDiscountedPintOfMilk()));
     }
 
     private static Arguments noItems() {
@@ -60,8 +72,16 @@ class BasketTest {
         return new Product(new BigDecimal("0.49")).oneOf();
     }
 
+    private static Item aDiscountedPintOfMilk() {
+        return new Product(new BigDecimal("0.50"), new FlatDiscount(new BigDecimal("0.2"))).oneOf();
+    }
+
     private static Item aPackOfDigestives() {
         return new Product(new BigDecimal("1.55")).oneOf();
+    }
+
+    private static Item aPackOfDigestivesWithDiscount() {
+        return new Product(new BigDecimal("1.55"), new FlatDiscount(new BigDecimal("0.33"))).oneOf();
     }
 
     private static WeighedProduct aKiloOfAmericanSweets() {
