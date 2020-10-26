@@ -11,7 +11,7 @@ public class FlatDiscount implements Discount {
         if (rate.compareTo(BigDecimal.ONE) > 0 ){
             throw new BadDiscountException("Discount rate is > 1: " + rate.toString());
         }
-        this.rate = BigDecimal.ONE.subtract(rate);
+        this.rate = rate;
     }
 
     @Override
